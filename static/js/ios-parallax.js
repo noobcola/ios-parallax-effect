@@ -1,72 +1,88 @@
-/**
- * Created by hustleman on 3/26/17.
- */
-function iosParallax(options){
-  this.options = {
+(function($){
+  $.iosParallax = function(el, options){
+    // To avoid scope issues, use 'base' instead of 'this'
+    // to reference this class from internal events and functions.
+    var base = this;
+
+    // Access to jQuery and DOM versions of element
+    base.$el = $(el);
+    base.el = el;
+
+    // Add a reverse reference to the DOM object
+    base.$el.data("iosParallax", base);
+
+    /** @private */
+    var centerCoordinates = {x: 0, y: 0};
+    /** @private */
+    var targetCoordinates = {x: 0, y: 0};
+    /** @private */
+    var transitionCoordinates = {x: 0, y: 0};
+
+    function getBackgroundImageSize(){
+      var img = new Image;
+      var imgUrl = base.$el.css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
+      img.src = imgUrl;
+      return {width: img.width, height: img.height};
+    }
+
+    function setCenterCoordinates(){
+      var bgImgSize = getBackgroundImageSize();
+      centerCoordinates.x = -1 * (bgImgSize.width - $(window).width()) / 2;
+      centerCoordinates.y = -1 * (bgImgSize.height - $(window).height()) / 2;
+      targetCoordinates.x = centerCoordinates.x;
+      targetCoordinates.y = centerCoordinates.y;
+      transitionCoordinates.x = centerCoordinates.x;
+      transitionCoordinates.y = centerCoordinates.y;
+    }
+
+    function bindEvents(){
+      base.$el.mousemove(function(e){
+        var height = base.options.movementFactor / $(window).height();
+        var width = base.options.movementFactor / $(window).width();
+        var cursorX = e.pageX - ($(window).width() / 2);
+        var cursorY = e.pageY - ($(window).height() / 2);
+        targetCoordinates.x = width * cursorX * -1 + centerCoordinates.x;
+        targetCoordinates.y = height * cursorY * -1 + centerCoordinates.y;
+      });
+
+      var loop = setInterval(function(){
+        transitionCoordinates.x += ((targetCoordinates.x - transitionCoordinates.x) / base.options.dampenFactor);
+        transitionCoordinates.y += ((targetCoordinates.y - transitionCoordinates.y) / base.options.dampenFactor);
+        base.$el.css("background-position", transitionCoordinates.x+"px "+transitionCoordinates.y+"px");
+      }, 16);
+
+      $(window).resize(function(){
+        setCenterCoordinates();
+      });
+
+      var img = new Image;
+      img.src = base.$el.css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
+      $(img).load(function(){
+        setCenterCoordinates();
+      });
+    };
+
+    base.init = function(){
+      base.options = $.extend({}, $.iosParallax.defaultOptions, options);
+      bindEvents();
+    };
+
+    // Run initializer
+    base.init();
+  };
+
+  $.iosParallax.defaultOptions = {
     // How fast the background moves
     movementFactor: 50,
     // How much to dampen the movement (higher is slower)
     dampenFactor: 36,
-    backgroundElement: null
   };
-  $.extend(this.options, options);
 
-  /** @private */
-  this.centerCoordinates_ = {x: 0, y: 0};
-  /** @private */
-  this.targetCoordinates_ = {x: 0, y: 0};
-  /** @private */
-  this.transitionCoordinates_ = {x: 0, y: 0};
-}
+  $.fn.iosParallax = function(options){
+    return this.each(function(){
+      (new $.iosParallax(this, options));
+    });
+  };
 
-iosParallax.prototype.bindEvents = function(){
-  var self = this;
-  
-  $(self.options.backgroundElement).mousemove(function(e){
-    var height = self.options.movementFactor / $(window).height();
-    var width = self.options.movementFactor / $(window).width();
-    var cursorX = e.pageX - ($(window).width() / 2);
-    var cursorY = e.pageY - ($(window).height() / 2);
-    self.targetCoordinates_.x = width * cursorX * -1 + self.centerCoordinates_.x;
-    self.targetCoordinates_.y = height * cursorY * -1 + self.centerCoordinates_.y;
-  });
-
-  var loop = setInterval(function(){
-    self.transitionCoordinates_.x += ((self.targetCoordinates_.x - self.transitionCoordinates_.x)/self.options.dampenFactor);
-    self.transitionCoordinates_.y += ((self.targetCoordinates_.y - self.transitionCoordinates_.y)/self.options.dampenFactor);
-    $(self.options.backgroundElement).css("background-position", self.transitionCoordinates_.x+"px "+self.transitionCoordinates_.y+"px");
-  }, 16);
-
-  $(window).resize(function(){
-    self.setCenteredImageCoordinates_();
-  });
-
-  var img = new Image;
-  var imgUrl = $(self.options.backgroundElement).css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
-  img.src= imgUrl;
-  $(img).load(function(){
-    self.setCenteredImageCoordinates_();
-  });
-};
-
-iosParallax.prototype.setCenteredImageCoordinates_ = function(){
-  var self = this;
-  var bgImgSize = self.getBackgroundImageSize_();
-  self.centerCoordinates_.x = -1 * (bgImgSize.width - $(window).width()) / 2;
-  self.centerCoordinates_.y = -1 * (bgImgSize.height - $(window).height()) / 2;
-  self.targetCoordinates_.x = self.centerCoordinates_.x;
-  self.targetCoordinates_.y = self.centerCoordinates_.y;
-  self.transitionCoordinates_.x = self.centerCoordinates_.x;
-  self.transitionCoordinates_.y = self.centerCoordinates_.y;
-};
-
-iosParallax.prototype.getBackgroundImageSize_ = function(){
-  var self = this;
-  var img = new Image;
-  var imgUrl = $(self.options.backgroundElement).css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
-  img.src = imgUrl;
-  return {width: img.width, height: img.height};
-};
-
-
+})(jQuery);
 
