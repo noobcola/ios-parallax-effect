@@ -46,12 +46,14 @@
       });
 
       var loop = setInterval(function(){
+        // Slowly converge the background image position to the target coordinates in 60 FPS
         transitionCoordinates.x += ((targetCoordinates.x - transitionCoordinates.x) / base.options.dampenFactor);
         transitionCoordinates.y += ((targetCoordinates.y - transitionCoordinates.y) / base.options.dampenFactor);
         base.$el.css("background-position", transitionCoordinates.x+"px "+transitionCoordinates.y+"px");
       }, 16);
 
       $(window).resize(function(){
+        // Re-center the image
         setCenterCoordinates();
       });
 
@@ -75,7 +77,7 @@
     // How fast the background moves
     movementFactor: 50,
     // How much to dampen the movement (higher is slower)
-    dampenFactor: 36,
+    dampenFactor: 36
   };
 
   $.fn.iosParallax = function(options){
