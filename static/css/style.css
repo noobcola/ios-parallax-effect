@@ -1,0 +1,10 @@
+#top-image {
+  background:url('../../wallpapers/mountains_light_sun_sky_clouds_114136_2560x1080.jpg') no-repeat fixed;
+  background-position: -384.5px -285px;
+  position:fixed ;
+  top:0;
+  width:100%;
+  z-index:0;
+  height:100%;
+  background-size: 125%;
+}
