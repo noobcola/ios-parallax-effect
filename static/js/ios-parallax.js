@@ -11,11 +11,8 @@
     // Add a reverse reference to the DOM object
     base.$el.data("iosParallax", base);
 
-    /** @private */
     var centerCoordinates = {x: 0, y: 0};
-    /** @private */
     var targetCoordinates = {x: 0, y: 0};
-    /** @private */
     var transitionCoordinates = {x: 0, y: 0};
 
     function getBackgroundImageSize(){
@@ -69,7 +66,6 @@
       bindEvents();
     };
 
-    // Run initializer
     base.init();
   };
 
