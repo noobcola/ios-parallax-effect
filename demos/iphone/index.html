@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iOS Parallax demo on iPhone</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="../../static/js/ios-parallax.js"></script>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="iphone-border">
+	<span class="top left">
+		<span class="ringer"></span>
+		<span class="volume up"></span>
+		<span class="volume down"></span>
+	</span>
+  <span class="top right">
+		<span class="power"></span>
+	</span>
+  <span class="bottom left"></span>
+  <span class="bottom right"></span>
+
+  <div class="iphone">
+    <span class="speaker"></span>
+    <div class="screen">
+
+      <div class="home">
+        <div class="bg"></div>
+
+        <div class="top-bar">
+          <span class="signal">&#9679;&#9679;&#9679;&#9679;&#9679;</span>
+          <span class="wifi"><hr /></span>
+          <span class="time">2:30 PM</span>
+          <span class="battery">100%</span>
+        </div>
+
+        <div class="icons">
+
+          <a class="icon messages" alt="Messages">
+            <hr />
+          </a>
+          <a class="icon calendar" alt="Calendar">
+            <span class="weekday"></span>
+            <span class="date"></span>
+          </a>
+          <a class="icon photos" alt="Photos">
+            <span class="orange"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+            <span class="seafoam"></span>
+            <span class="blue"></span>
+            <span class="purple"></span>
+            <span class="pink"></span>
+            <span class="red"></span>
+          </a>
+          <a class="icon camera" alt="Camera">
+            <span class="shutter"></span>
+            <div class="body">
+              <span class="lens"></span>
+            </div>
+          </a>
+
+          <a class="icon weather" alt="Weather">
+            <span class="sun"></span>
+            <span class="cloud"></span>
+          </a>
+          <a class="icon clock" alt="Clock">
+            <div class="clock">
+              <div><span>12</span></div>
+              <div><span>11</span><span>1</span></div>
+              <div><span>10</span><span>2</span></div>
+              <div><span>9</span><span>3</span></div>
+              <div><span>8</span><span>4</span></div>
+              <div><span>7</span><span>5</span></div>
+              <div><span>6</span></div>
+              <hr class="minute"/><hr class="hour"/><hr class="second"/>
+            </div>
+          </a>
+          <a class="icon maps" alt="Maps"></a>
+          <a class="icon videos" alt="Videos">
+            <div class="arm">
+              <div><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+          </a>
+
+          <a class="icon notes" alt="Notes">
+            <div class="binding"></div>
+            <hr /><hr /><hr />
+          </a>
+          <a class="icon reminders" alt="Reminders">
+            <hr /><hr /><hr /><hr /><hr />
+          </a>
+          <a class="icon stocks" alt="Stocks">
+            <div class="graph">
+              <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+            </div>
+            <span class="current"></span>
+          </a>
+          <a class="icon calculator" alt="Calculator">
+            <span class="left top">+</span><span class="right top">-</span>
+            <span class="left bottom">&#215;</span><span class="right bottom">=</span>
+          </a>
+
+          <a class="icon voicememos" alt="Voice Memos">
+            <div class="soundwave">
+              <hr class="two" />
+              <hr class="three" />
+              <hr class="two" />
+              <hr class="three" />
+              <hr class="two" />
+              <hr class="one" />
+              <hr class="two" />
+              <hr class="three" />
+              <hr class="fourteen" />
+              <hr class="twelve" />
+              <hr class="eighteen" />
+              <hr class="sixteen" />
+              <hr class="fourty" />
+              <hr class="thirty" />
+              <hr class="thirtyone" />
+              <hr class="sixteen" />
+              <hr class="twelve" />
+              <hr class="six" />
+              <hr class="twelve" />
+              <hr class="fourteen" />
+              <hr class="six" />
+              <hr class="seven" />
+              <hr class="eight" />
+              <hr class="five" />
+              <hr class="four" />
+              <hr class="five" />
+              <hr class="four" />
+              <hr class="three" />
+              <hr class="two" />
+              <hr class="three" />
+              <hr class="two" />
+              <hr class="three" />
+              <hr class="two" />
+              <hr class="three" />
+            </div>
+          </a>
+          <a class="icon itunesstore" alt="iTunes Store">
+            <div class="note">
+              <span class="arm"></span>
+              <span class="arm"></span>
+            </div>
+          </a>
+          <a class="icon passbook" alt="Passbook">
+            <div class="flights"><span><hr /></span></div>
+            <div class="movies"><span><hr /><hr /></span></div>
+            <div class="restaurants"><span></span></div>
+          </a>
+          <a class="icon compass" alt="Compass">
+            <div class="degrees">
+              <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+              <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+              <span class="horizontal"></span>
+              <span class="vertical"></span>
+            </div>
+          </a>
+
+          <a class="icon facetime" alt="FaceTime">
+            <div class="camera">
+              <span class="lens"></span>
+            </div>
+          </a>
+          <a class="icon settings" alt="Settings"></a>
+
+        </div>
+
+        <div class="nav-bar">
+          <span>&#9679;</span>
+          <span>&#9679;</span>
+        </div>
+
+        <div class="footer-bar icons">
+          <a class="icon phone" alt="Phone">
+            <span></span>
+          </a>
+          <a class="icon mail" alt="Mail">
+            <div class="envelope">
+              <span class="flap"></span>
+            </div>
+          </a>
+          <a class="icon safari" alt="Safari">
+            <div class="compass">
+              <div class="degrees">
+                <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+                <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+                <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+                <hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+              </div>
+            </div>
+          </a>
+          <a class="icon music" alt="Music">
+            <div class="note">
+              <span class="arm"></span>
+              <span class="arm"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="home"></a>
+  </div>
+</div>
+</body>
+</html>

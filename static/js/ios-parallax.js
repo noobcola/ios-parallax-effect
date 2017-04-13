@@ -24,8 +24,8 @@
 
     function setCenterCoordinates(){
       var bgImgSize = getBackgroundImageSize();
-      centerCoordinates.x = -1 * (bgImgSize.width - $(window).width()) / 2;
-      centerCoordinates.y = -1 * (bgImgSize.height - $(window).height()) / 2;
+      centerCoordinates.x = -1 * Math.abs(bgImgSize.width - base.$el.width()) / 2;
+      centerCoordinates.y = -1 * Math.abs(bgImgSize.height - base.$el.height()) / 2;
       targetCoordinates.x = centerCoordinates.x;
       targetCoordinates.y = centerCoordinates.y;
       transitionCoordinates.x = centerCoordinates.x;
@@ -34,8 +34,8 @@
 
     function bindEvents(){
       base.$el.mousemove(function(e){
-        var height = base.options.movementFactor / $(window).height();
-        var width = base.options.movementFactor / $(window).width();
+        var width = base.options.movementFactor / base.$el.width();
+        var height = base.options.movementFactor / base.$el.height();
         var cursorX = e.pageX - ($(window).width() / 2);
         var cursorY = e.pageY - ($(window).height() / 2);
         targetCoordinates.x = width * cursorX * -1 + centerCoordinates.x;
