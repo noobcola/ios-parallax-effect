@@ -23,7 +23,9 @@ $(document).ready(function() {
   rotateDegrees($(".iphone .screen .icon.compass .degrees hr"));
 
   $('div.home').iosParallax({
-    movementFactor: 50
+    // slightly exaggerated movement force and dampening factors
+    movementFactor: 12,
+    dampenFactor: 12
   });
 });
 

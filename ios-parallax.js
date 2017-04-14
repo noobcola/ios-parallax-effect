@@ -15,10 +15,17 @@
     var targetCoordinates = {x: 0, y: 0};
     var transitionCoordinates = {x: 0, y: 0};
 
+    function getBackgroundImageUrl(){
+      var backgroundImage = base.$el.css('background-image').match(/url\(.*\)/ig);
+      if ( backgroundImage.length < 1) {
+        throw 'No background image found';
+      }
+      return backgroundImage[0].replace(/url\(|'|"|'|"|\)$/ig, "");
+    }
+
     function getBackgroundImageSize(){
       var img = new Image;
-      var imgUrl = base.$el.css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
-      img.src = imgUrl;
+      img.src = getBackgroundImageUrl();
       return {width: img.width, height: img.height};
     }
 
@@ -42,8 +49,8 @@
         targetCoordinates.y = height * cursorY * -1 + centerCoordinates.y;
       });
 
+      // Slowly converge the background image position to the target coordinates in 60 FPS
       var loop = setInterval(function(){
-        // Slowly converge the background image position to the target coordinates in 60 FPS
         transitionCoordinates.x += ((targetCoordinates.x - transitionCoordinates.x) / base.options.dampenFactor);
         transitionCoordinates.y += ((targetCoordinates.y - transitionCoordinates.y) / base.options.dampenFactor);
         base.$el.css("background-position", transitionCoordinates.x+"px "+transitionCoordinates.y+"px");
@@ -54,8 +61,9 @@
         setCenterCoordinates();
       });
 
+      // There's a problem with getting image height and width when the image isn't loaded.
       var img = new Image;
-      img.src = base.$el.css('background-image').replace(/url\(|'|"|'|"|\)$/ig, "");
+      img.src = getBackgroundImageUrl();
       $(img).load(function(){
         setCenterCoordinates();
       });
