@@ -17,7 +17,7 @@
 
     function getBackgroundImageUrl(){
       var backgroundImage = base.$el.css('background-image').match(/url\(.*\)/ig);
-      if ( backgroundImage.length < 1) {
+      if ( ! backgroundImage || backgroundImage.length < 1) {
         throw 'No background image found';
       }
       return backgroundImage[0].replace(/url\(|'|"|'|"|\)$/ig, "");

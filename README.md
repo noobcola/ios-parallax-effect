@@ -1,5 +1,7 @@
 # Simple iOS Parallax Effect
 
+A simple jQuery plugin that reproduces the moving background parallax effect in iOS using only HTML, CSS, and JS
+
 ## Example Usage
 
 ## Demos
@@ -25,8 +27,13 @@ If you would like to contribute, please read [contributing.md](CONTRIBUTING.md) 
 
 ## Style
 
-We've used [Google ES6 Javascript Style Guide](https://google.github.io/styleguide/jsguide.html)
+We're using the [Google ES6 Javascript Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+## Notes
+
+* If you're defining the background-image property in a separate css file, make sure the CSS file is loaded before calling `$.iosParallax();`
 
 # TODO
 * How to use
 * Determine browser compatibility
+* Add to NPM
