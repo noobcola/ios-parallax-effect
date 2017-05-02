@@ -1,0 +1,47 @@
+{
+  "name": "ios-parallax",
+  "title": "iOS Parallax",
+  "description": "A simple jQuery plugin that reproduces the moving background parallax effect in iOS using only HTML, CSS, and JS",
+  "keywords": [
+    "ios",
+    "jquery-plugin",
+    "parallax",
+    "background",
+    "retina",
+    "jquery",
+    "ecosystem:jquery"
+  ],
+  "version": "1.0.0",
+  "author": "Thomas Le (http://github.com/noobcola",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/noobcola/ios-parallax-effect/blob/master/LICENSE.md"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "demos": [
+    "https://noobcola.github.io/ios-parallax-effect/demos/fullpage/",
+    "https://noobcola.github.io/ios-parallax-effect/demos/iphone/"
+  ],
+  "bugs": {
+    "url": "https://github.com/noobcola/ios-parallax-effect/issues/new"
+  },
+  "main": "src/ios-parallax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noobcola/ios-parallax-effect.git"
+  },
+  "homepage": "https://github.com/noobcola/ios-parallax-effect",
+  "license": "MIT",
+  "autoupdate": {
+    "source": "git",
+    "target": "git@github.com:noobcola/ios-parallax-effect.git",
+    "basePath": "src/",
+    "files": [
+      "**/*"
+    ]
+  }
+}
