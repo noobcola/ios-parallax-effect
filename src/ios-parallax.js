@@ -64,7 +64,7 @@
       // There's a problem with getting image height and width when the image isn't loaded.
       var img = new Image;
       img.src = getBackgroundImageUrl();
-      $(img).load(function(){
+      $(img).on('load', function(){
         setCenterCoordinates();
       });
     };
