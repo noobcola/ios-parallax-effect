@@ -11,7 +11,7 @@
     "jquery",
     "ecosystem:jquery"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Thomas Le (http://github.com/noobcola",
   "licenses": [
     {
