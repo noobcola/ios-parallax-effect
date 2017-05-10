@@ -4,6 +4,40 @@ A simple jQuery plugin that reproduces the moving background parallax effect in 
 
 ## Example Usage
 
+Include jQuery and ios-parallax:
+
+```html
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="ios-parallax.js"></script>
+<body>
+    <div id="elem"></div>
+</body>
+```
+
+Add a CSS background image to the target element:
+
+```
+#elem {
+  background: url('bg.jpg') no-repeat fixed;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  height: 100%;
+}
+```
+
+Initialize the plugin:
+
+```javascript
+$('#elem').iosParallax({
+  // How fast the background moves
+  movementFactor: 50,
+  // How much to dampen the movement (higher is slower)
+  dampenFactor: 36
+});
+```
+
 ## Demos
 
 * [Full-page background example](https://noobcola.github.io/ios-parallax-effect/demos/fullpage/)
@@ -11,7 +45,9 @@ A simple jQuery plugin that reproduces the moving background parallax effect in 
 
 ## Installation
 
-* TODO: Add on npm and bower
+```
+npm install ios-parallax
+```
 
 ## Browser Compatibility
 
@@ -34,6 +70,5 @@ We're using the [Google ES6 Javascript Style Guide](https://google.github.io/sty
 * If you're defining the background-image property in a separate css file, make sure the CSS file is loaded before calling `$.iosParallax();`
 
 # TODO
-* How to use
+
 * Determine browser compatibility
-* Add to NPM
